@@ -8,7 +8,7 @@
 
 using std::string;
 using std::cout;
-
+typedef unsigned int uint32_t;
 
 template <class TData>
 class customIterator
@@ -21,8 +21,8 @@ public:
 	
 	typedef TData value_type;
 	typedef ptrdiff_t difference_type;
-	typedef const TData& reference;
-	typedef const TData* pointer;
+	typedef  TData& reference;
+	typedef  TData* pointer;
 	typedef size_t size_type;
 	typedef std::random_access_iterator_tag iterator_category;
 
@@ -57,6 +57,12 @@ public:
 		++itPtr;
 		return *this;
 	}
+
+	customIterator& operator ++(int)
+	{
+		++itPtr;
+		return *this;
+	}
 	
 	
 	customIterator operator-= (const size_type& i)
@@ -72,11 +78,10 @@ public:
 		return *this;
 	}
 		
-	customIterator operator --(int i)
+	customIterator& operator --(int i)
 	{
-		customIterator Temp(*this);
-		--(*this);
-		return Temp;
+		--itPtr;
+		return *this;
 	}
 	
 	customIterator operator -(const difference_type& idx) 
@@ -85,7 +90,7 @@ public:
 		return Tmp -= idx;
 	}
 
-	difference_type operator -(const customIterator& Other) const
+	difference_type operator -(const customIterator& Other)
 	{
 		return itPtr - Other.itPtr;
 	}

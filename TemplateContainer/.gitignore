@@ -3,5 +3,6 @@ TemplateContainer\TemplateContainer\TemplateContainer\Debug\
 .vs/
 TemplateContainer.VC.db
 TemplateContainer/x64/
+TemplateContainer/TemplateContainer.vcxproj
 ipch/
 x64/
